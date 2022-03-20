@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "cwd": "${workspaceRoot}",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Manager",
+            "request": "launch",
+            "mainClass": "project.Manager",
+            "projectName": "password_manager_2f727d98"
+        },
+        {
+            "type": "java",
+            "name": "Launch Manager",
+            "request": "launch",
+            "mainClass": "project.Manager",
+            "projectName": "password_manager_eebc5ec4"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ManagerApplication",
+            "request": "launch",
+            "vmArgs": "--module-path ./lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "project.ManagerApplication"
+        }
+    ]
+}
