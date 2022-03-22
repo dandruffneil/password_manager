@@ -43,7 +43,7 @@ public class NewPasswordController {
     private TextField newWebsiteField, newUsernameField, newPasswordField;
 
     @FXML
-    private Label passwordExists;
+    private Label passwordExists, passwordEmpty;
 
 
     public NewPasswordController(Manager manager) {
@@ -72,7 +72,9 @@ public class NewPasswordController {
         String username = newUsernameField.getText();
         String website = newWebsiteField.getText();
 
-        if (!manager.checkDuplicate(website, username)) {
+        if (password.equals("") || username.equals("") || website.equals("")) {
+            passwordEmpty.setVisible(true);
+        } else if (!manager.checkDuplicate(website, username)) {
             manager.addPassword(password, username, website);
             managerScreen.start();
         } else {
@@ -87,9 +89,10 @@ public class NewPasswordController {
 
     public void clearText() {
         newPasswordField.clear();
-            newUsernameField.clear();
-            newWebsiteField.clear();
-            passwordExists.setVisible(false);
+        newUsernameField.clear();
+        newWebsiteField.clear();
+        passwordExists.setVisible(false);
+        passwordEmpty.setVisible(false);
     }
 
 }

@@ -56,7 +56,7 @@ public class ManagerController {
     private AnchorPane passwordBox;
 
     @FXML
-    private Button addButton, changePassButton;
+    private Button addButton, changePassButton, deleteButton;
     
     @FXML
     private ToggleButton showPasswordButton;
@@ -137,6 +137,16 @@ public class ManagerController {
         } else {
             showPasswordButton.setText("Show Password");
         }
+    }
+
+    @FXML
+    public void handleDeleteButton() {
+        String website = selectedPassword.getWebsite();
+        String username = selectedPassword.getUsername();
+
+        manager.deletePassword(website, username);
+        reset();
+        updateWebsiteList();
     }
 
     public void setNewPasswordScreen(NewPasswordScreen newPasswordScreen) {

@@ -4,6 +4,7 @@ package project;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import javafx.beans.property.BooleanProperty;
@@ -23,6 +24,7 @@ public class Manager {
         Password newPass = new Password(password, username, website);
         passList.add(newPass);
         size++;
+        Collections.sort(passList);
     }
 
     public void deletePassword(String website, String username) {

@@ -47,7 +47,7 @@
                               <ListView fx:id="usernameList" layoutY="31.0" prefHeight="150.0" prefWidth="386.0" />
                            </children>
                         </AnchorPane>
-                      <AnchorPane fx:id="passwordBox" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" visible="false">
+                      <AnchorPane fx:id="passwordBox" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
                               <Label layoutY="1.0" prefHeight="26.0" prefWidth="386.0" text="View / Modify">
                                  <font>
@@ -62,14 +62,15 @@
                                     <Font size="20.0" />
                                  </font>
                               </TextField>
-                              <PasswordField fx:id="passwordHiddenText" editable="false" layoutX="14.0" layoutY="66.0" prefHeight="34.0" prefWidth="337.0">
+                              <PasswordField fx:id="passwordHiddenText" editable="false" layoutX="14.0" layoutY="66.0" prefHeight="44.0" prefWidth="338.0">
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font name="Consolas" size="20.0" />
                                  </font>
                               </PasswordField>
-                              <TextField fx:id="newPasswordText" layoutX="14.0" layoutY="129.0" promptText="New password" />
-                              <Button fx:id="changePassButton" layoutX="193.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleChangePassword" text="Change Password" />
+                              <TextField fx:id="newPasswordText" layoutX="14.0" layoutY="129.0" prefHeight="26.0" prefWidth="208.0" promptText="New password" />
+                              <Button fx:id="changePassButton" layoutX="240.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleChangePassword" text="Change Password" />
                               <ToggleButton fx:id="showPasswordButton" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleShowPassword" text="Show Password" />
+                              <Button fx:id="deleteButton" layoutX="301.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleDeleteButton" style="-fx-background-color: ffb2ab;" text="Delete" />
                            </children>
                         </AnchorPane>
                     </items>

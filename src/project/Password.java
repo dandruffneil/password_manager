@@ -1,6 +1,6 @@
 package project;
 
-public class Password {
+public class Password implements Comparable<Password> {
     private String password;
     private String username;
     private String website;
@@ -47,6 +47,15 @@ public class Password {
 
     public String toString() {
         return "Website: \t" + this.website + "\nUsername: \t" + this.username + "\nPassword: \t" + this.password + "\n";
+    }
+
+    @Override
+    public int compareTo(Password o) {
+        if (website.compareTo(o.getWebsite()) == 0) {
+            return username.compareTo(o.getUsername());
+        } else {
+            return website.compareTo(o.getWebsite());
+        }
     }
 
 }
