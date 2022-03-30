@@ -1,6 +1,8 @@
 package project;
 
-public class Password implements Comparable<Password> {
+import java.io.Serializable;
+
+public class Password implements Comparable<Password>, Serializable {
     private String password;
     private String username;
     private String website;
