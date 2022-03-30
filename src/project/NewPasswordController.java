@@ -32,6 +32,7 @@ import javafx.event.EventHandler;
 public class NewPasswordController {
 
     private Manager manager;
+    private Pickler pickler;
     private Timeline time;
 
     private ManagerScreen managerScreen;
@@ -46,8 +47,9 @@ public class NewPasswordController {
     private Label passwordExists, passwordEmpty;
 
 
-    public NewPasswordController(Manager manager) {
+    public NewPasswordController(Manager manager, Pickler pickler) {
         this.manager = manager;
+        this.pickler = pickler;
 
         // this.time = new Timeline();
         // time.setCycleCount(Animation.INDEFINITE);

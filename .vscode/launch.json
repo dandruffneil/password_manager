@@ -7,6 +7,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch PasswordStrength",
+            "request": "launch",
+            "mainClass": "project.PasswordStrength",
+            "projectName": "password_manager_2f727d98"
+        },
+        {
+            "type": "java",
             "name": "Launch Manager",
             "request": "launch",
             "mainClass": "project.Manager",

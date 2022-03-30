@@ -15,11 +15,11 @@ public class NewPasswordScreen {
     private NewPasswordController controller;
     private Scene scene;
     
-    public NewPasswordScreen(Stage stage, Manager manager) throws IOException {
+    public NewPasswordScreen(Stage stage, Manager manager, Pickler pickler) throws IOException {
         this.stage = stage;
         title = "Password Manager";
 
-        controller = new NewPasswordController(manager);
+        controller = new NewPasswordController(manager, pickler);
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("NewPasswordView.fxml"));
         loader.setController(controller);
