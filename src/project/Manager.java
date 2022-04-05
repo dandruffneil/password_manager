@@ -15,6 +15,7 @@ public class Manager implements Serializable {
 
     private List<Password> passList;
     private int size;
+    private static Pickler pickler = new Pickler("passwords.ser", "neilyangsecret12");
 
     public Manager() {
         this.passList = new ArrayList<Password>();
@@ -26,6 +27,7 @@ public class Manager implements Serializable {
         passList.add(newPass);
         size++;
         Collections.sort(passList);
+        pickler.savePasswords(this);
     }
 
     public void deletePassword(String website, String username) {
@@ -34,6 +36,7 @@ public class Manager implements Serializable {
             passList.remove(index);
             size--;
         }
+        pickler.savePasswords(this);
     }
 
     public void editPassword(String website, String username, String newPassword) {
@@ -41,6 +44,7 @@ public class Manager implements Serializable {
         if (index != -1) {
             passList.get(index).setPassword(newPassword);
         }
+        pickler.savePasswords(this);
     }
 
     public Password getIndexPassword(int index) {
@@ -77,6 +81,10 @@ public class Manager implements Serializable {
             }
         }
         return index;
+    }
+
+    public static Manager loadPasswords() {
+        return pickler.loadPasswords();
     }
 
 

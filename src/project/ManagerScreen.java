@@ -51,8 +51,4 @@ public class ManagerScreen {
         return controller.getManager();
     }
 
-    public Pickler getPickler() {
-        return controller.getPickler();
-    }
-
 }

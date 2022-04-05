@@ -40,7 +40,6 @@ public class ManagerController {
 
     private Manager manager;
     private Timeline time;
-    private Pickler pickler;
 
     private NewPasswordScreen newPasswordScreen;
     private BooleanProperty showPasswordToggle;
@@ -68,8 +67,7 @@ public class ManagerController {
 
     public ManagerController() {
         this.showPasswordToggle = new SimpleBooleanProperty(false);
-        this.pickler = new Pickler("passwords.ser");
-        this.manager = pickler.loadPasswords();
+        this.manager = Manager.loadPasswords();
 
         // this.time = new Timeline();
         // time.setCycleCount(Animation.INDEFINITE);
@@ -130,7 +128,6 @@ public class ManagerController {
         passwordText.setText(newPassword);
         selectedPassword.setPassword(newPassword);
         newPasswordText.clear();
-        pickler.savePasswords(manager);
     }
 
     @FXML
@@ -150,7 +147,6 @@ public class ManagerController {
         manager.deletePassword(website, username);
         reset();
         updateWebsiteList();
-        pickler.savePasswords(manager);
     }
 
     public void setNewPasswordScreen(NewPasswordScreen newPasswordScreen) {
@@ -159,10 +155,6 @@ public class ManagerController {
 
     public Manager getManager() {
         return this.manager;
-    }
-
-    public Pickler getPickler() {
-        return this.pickler;
     }
 
     public void updateWebsiteList() {
