@@ -1,26 +1,11 @@
 package project;
 
-import javafx.event.ActionEvent;
+import java.security.SecureRandom;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.input.MouseButton;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.util.Duration;
-import javafx.animation.Timeline;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.event.EventHandler;
 
 
 /**
@@ -32,32 +17,21 @@ import javafx.event.EventHandler;
 public class NewPasswordController {
 
     private Manager manager;
-    private Timeline time;
 
     private ManagerScreen managerScreen;
 
     @FXML
-    private Button addConfirmButton;
+    private Button addConfirmButton, cancelButton, generateButton;
 
     @FXML
     private TextField newWebsiteField, newUsernameField, newPasswordField;
 
     @FXML
-    private Label passwordExists, passwordEmpty;
+    private Label passwordExists, passwordEmpty, generateLabel;
 
 
     public NewPasswordController(Manager manager) {
         this.manager = manager;
-
-        // this.time = new Timeline();
-        // time.setCycleCount(Animation.INDEFINITE);
-        // time.getKeyFrames().add(new KeyFrame(Duration.millis(500),
-        //     new EventHandler<ActionEvent>() {
-        //         @Override public void handle(ActionEvent event) {
-        //             game.tick();
-        //         }
-        //     }));
-
     }
 
     @FXML
@@ -83,6 +57,24 @@ public class NewPasswordController {
 
     }
 
+    @FXML
+    public void handleCancelButton() {
+        managerScreen.start();
+    }
+
+    @FXML
+    public void handleGenerateButton() {
+        SecureRandom r = new SecureRandom();
+        String randomPass = "";
+        for (int i = 0; i < 12; i++) {
+            int ascii = r.nextInt(94) + 33;
+            randomPass = randomPass.concat(Character.toString((char) ascii));
+        }
+
+        generateLabel.setText(randomPass);
+        newPasswordField.setText(randomPass);
+    }
+
     public void setManagerScreen(ManagerScreen managerScreen) {
         this.managerScreen = managerScreen;
     }
@@ -91,6 +83,7 @@ public class NewPasswordController {
         newPasswordField.clear();
         newUsernameField.clear();
         newWebsiteField.clear();
+        generateLabel.setText("");
         passwordExists.setVisible(false);
         passwordEmpty.setVisible(false);
     }
