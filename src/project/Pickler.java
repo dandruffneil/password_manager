@@ -57,7 +57,7 @@ public class Pickler {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
-        // f.delete();
+        f.delete();
         System.out.println("Passwords saved");
     }
 

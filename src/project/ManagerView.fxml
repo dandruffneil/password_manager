@@ -71,6 +71,7 @@
                               <Button fx:id="changePassButton" layoutX="240.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleChangePassword" text="Change Password" />
                               <ToggleButton fx:id="showPasswordButton" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleShowPassword" text="Show Password" />
                               <Button fx:id="deleteButton" layoutX="301.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleDeleteButton" style="-fx-background-color: ffb2ab;" text="Delete" />
+                              <Button fx:id="copyButton" layoutX="124.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleCopyButton" text="Copy to Clipboard" />
                            </children>
                         </AnchorPane>
                     </items>

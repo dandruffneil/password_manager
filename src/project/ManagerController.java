@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
@@ -43,6 +45,7 @@ public class ManagerController {
 
     private NewPasswordScreen newPasswordScreen;
     private BooleanProperty showPasswordToggle;
+    private Clipboard clipboard;
 
     private Password selectedPassword;
 
@@ -56,7 +59,7 @@ public class ManagerController {
     private AnchorPane passwordBox;
 
     @FXML
-    private Button addButton, changePassButton, deleteButton;
+    private Button addButton, changePassButton, deleteButton, copyButton;
     
     @FXML
     private ToggleButton showPasswordButton;
@@ -86,9 +89,12 @@ public class ManagerController {
         passwordText.visibleProperty().bind(showPasswordToggle);
         passwordHiddenText.visibleProperty().bind(showPasswordToggle.not());
 
+        clipboard = Clipboard.getSystemClipboard();
+
         websiteList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                passwordBox.setVisible(false);
                 updateUsernameList(newValue);
             }
         });
@@ -98,6 +104,8 @@ public class ManagerController {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (newValue != null) {
                     passwordBox.setVisible(true);
+                    showPasswordToggle.set(false);
+                    showPasswordButton.setText("Show Password");
                     String website = websiteList.getSelectionModel().getSelectedItem();
                     String username = usernameList.getSelectionModel().getSelectedItem();
     
@@ -147,6 +155,13 @@ public class ManagerController {
         manager.deletePassword(website, username);
         reset();
         updateWebsiteList();
+    }
+
+    @FXML
+    public void handleCopyButton() {
+        ClipboardContent content = new ClipboardContent();
+        content.putString(selectedPassword.getPassword());
+        clipboard.setContent(content);
     }
 
     public void setNewPasswordScreen(NewPasswordScreen newPasswordScreen) {
