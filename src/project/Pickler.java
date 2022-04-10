@@ -6,12 +6,13 @@ import javax.crypto.spec.SecretKeySpec;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.security.Key;
 import java.io.ObjectInputStream;
 import java.io.File;
 import java.io.IOException;
 
-public class Pickler {
+public class Pickler implements Serializable {
     private String filename;
     private String key;
 

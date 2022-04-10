@@ -53,17 +53,8 @@ public class ManagerController {
 
     public ManagerController() {
         this.showPasswordToggle = new SimpleBooleanProperty(false);
-        this.manager = Manager.loadPasswords();
-
-        // this.time = new Timeline();
-        // time.setCycleCount(Animation.INDEFINITE);
-        // time.getKeyFrames().add(new KeyFrame(Duration.millis(500),
-        //     new EventHandler<ActionEvent>() {
-        //         @Override public void handle(ActionEvent event) {
-        //             game.tick();
-        //         }
-        //     }));
-
+        // this.manager = Manager.loadPasswords();
+        this.manager = new Manager();
     }
 
     @FXML

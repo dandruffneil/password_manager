@@ -8,13 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 
-
-/**
- * A JavaFX controller for the Conway's Game of Live Application.
- *
- * @author Robert Clifton-Everest
- *
- */
 public class AuthenticationController {
 
     private Manager manager;
@@ -48,7 +41,10 @@ public class AuthenticationController {
     public void handleConfirmButton() {
         byte[] hashed = digest.digest(passwordField.getText().getBytes(StandardCharsets.UTF_8));
         String pass = bytesToHex(hashed);
+        System.out.println(pass);
         if (manager.checkAuth(pass)) {
+            Manager tempManager = manager.loadPasswords(passwordField.getText());
+            manager.copy(tempManager);
             managerScreen.start();
         } else {
             passwordField.setText("");

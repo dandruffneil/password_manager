@@ -10,8 +10,8 @@ public class Manager implements Serializable {
 
     private List<Password> passList;
     private int size;
-    private String auth = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8";
-    private static Pickler pickler = new Pickler("passwords.ser", "neilyangsecret12");
+    private String auth = "90061665741568e0db32458b16ecda34c785ef0ac9f377ae80b7b3e3d4f28071";
+    private Pickler pickler;
 
     public Manager() {
         this.passList = new ArrayList<Password>();
@@ -79,12 +79,21 @@ public class Manager implements Serializable {
         return index;
     }
 
-    public static Manager loadPasswords() {
+    public Manager loadPasswords(String key) {
+        pickler = new Pickler("passwords.ser", key);
         return pickler.loadPasswords();
     }
 
     public boolean checkAuth(String pass) {
         return pass.equals(auth);
+    }
+
+    public void copy(Manager tempManager) {
+        this.size = tempManager.getSize();
+        
+        for (int i = 0; i < this.size; i++) {
+            this.passList.add(tempManager.getIndexPassword(i));
+        }
     }
 
     public static void main(String[] args) {
