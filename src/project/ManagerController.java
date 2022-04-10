@@ -1,30 +1,14 @@
 package project;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.MouseButton;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.util.Duration;
-import javafx.animation.Timeline;
-
-
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.event.EventHandler;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -41,7 +25,6 @@ import javafx.beans.property.BooleanProperty;
 public class ManagerController {
 
     private Manager manager;
-    private Timeline time;
 
     private NewPasswordScreen newPasswordScreen;
     private BooleanProperty showPasswordToggle;

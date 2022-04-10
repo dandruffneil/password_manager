@@ -1,20 +1,16 @@
 
 package project;
 
-import java.util.HashMap;
 import java.util.List;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
-
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.StringProperty;
 
 public class Manager implements Serializable {
 
     private List<Password> passList;
     private int size;
+    private String auth = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8";
     private static Pickler pickler = new Pickler("passwords.ser", "neilyangsecret12");
 
     public Manager() {
@@ -87,6 +83,9 @@ public class Manager implements Serializable {
         return pickler.loadPasswords();
     }
 
+    public boolean checkAuth(String pass) {
+        return pass.equals(auth);
+    }
 
     public static void main(String[] args) {
         Manager manager = new Manager();

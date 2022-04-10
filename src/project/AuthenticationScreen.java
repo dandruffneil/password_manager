@@ -7,20 +7,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class NewPasswordScreen {
+public class AuthenticationScreen {
     
     private Stage stage;
     private String title;
-    private NewPasswordController controller;
+    private AuthenticationController controller;
     private Scene scene;
     
-    public NewPasswordScreen(Stage stage, Manager manager) throws IOException {
+    public AuthenticationScreen(Stage stage, Manager manager) throws IOException {
         this.stage = stage;
         title = "Password Manager";
 
-        controller = new NewPasswordController(manager);
+        controller = new AuthenticationController(manager);
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("NewPasswordView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AuthenticationView.fxml"));
         loader.setController(controller);
 
         Parent root = loader.load();
@@ -28,13 +28,12 @@ public class NewPasswordScreen {
     }
 
     public void start() {
-        controller.clearText();
         stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
     }
 
-    public NewPasswordController getController() {
+    public AuthenticationController getController() {
         return this.controller;
     }
 
